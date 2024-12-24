@@ -1,3 +1,4 @@
 from multiprocessing import cpu_count
 
-print(cpu_count())
+if __name__ == '__main__':
+    print(cpu_count())
