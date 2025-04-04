@@ -1,13 +1,14 @@
-import psutil,datetime
-
-from uptime import uptime
+import psutil
+from datetime import datetime
+import uptime
+import users
 
 kb=1024
 mb=kb * kb
 gb=mb * kb
 
 def format_datetime(dt):
-    return datetime.datetime.fromtimestamp(dt).strftime("%Y-%m-%d %H:%M:%S")
+    return datetime.fromtimestamp(dt).strftime("%Y-%m-%d %H:%M:%S")
 
 def print_split_line():
     print("-" * 80)
@@ -15,6 +16,7 @@ def print_split_line():
 if __name__ == '__main__':
     #### CPU ####
     print('Cpu Count: %s Cores , %s Threads ' %(psutil.cpu_count(logical=False),psutil.cpu_count()))
+    print(psutil.cpu_freq(percpu=False))
     print(psutil.cpu_times())
 
     #### Memory ####
@@ -22,7 +24,13 @@ if __name__ == '__main__':
     mem=psutil.virtual_memory()
     print(f'Mem: {mem.used/gb:.2f} / {mem.total/gb:.2f}')
 
-
+    #### Disk ####
+    print_split_line()
+    for dp in psutil.disk_partitions():
+        if not dp.device.startswith('/dev/loop'):
+            print(dp)
+    print()
+    print(psutil.disk_usage('/'))
     #### NetIO ####
     print_split_line()
     net = psutil.net_io_counters()
@@ -32,10 +40,8 @@ if __name__ == '__main__':
 
     #### Users Online ####
     print_split_line()
-    users_count = len(psutil.users())
-    users_list = ",".join([u.name for u in psutil.users()])
-    print("%s users online : %s"%(users_count, users_list))
+    users.online()
 
     #### uptime ####
     print_split_line()
-    uptime()
+    uptime.show()

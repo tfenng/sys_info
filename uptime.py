@@ -68,10 +68,16 @@ def get_time_difference(datetime1, datetime2, interval="default"):
     }[interval]
 
 
-def uptime():
-    bt=datetime.fromtimestamp(psutil.boot_time())
+def bt_time():
+    return datetime.fromtimestamp(psutil.boot_time())
+
+def val():
     now = datetime.now()
-    print(f"{bt.strftime("%Y-%m-%d %H:%M:%S")} up {get_time_difference(bt,now)}")
+    return get_time_difference(bt_time(), now)
+
+
+def show():
+    print(f"{bt_time().strftime("%Y-%m-%d %H:%M:%S")} up {val()}")
 
 if __name__ == '__main__':
-    uptime()
+    show()
