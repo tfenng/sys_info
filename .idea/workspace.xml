@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4110d9f3-a1f4-4c32-855f-ddf92ebd4800" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpu_cores.py" beforeDir="false" afterPath="$PROJECT_DIR$/cpu_cores.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cpu_cores.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sys_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/sys_info.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/uptime.py" beforeDir="false" afterPath="$PROJECT_DIR$/uptime.py" afterDir="false" />
     </list>
@@ -35,8 +36,8 @@
     &quot;Python.uptime.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/tony/PycharmProjects/psutil101&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;last_opened_file_path&quot;: &quot;/home/tony/src/ums&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.language&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -44,7 +45,7 @@
       <recent name="C:\Users\tony\PycharmProjects\psutil101" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.uptime">
+  <component name="RunManager" selected="Python.sys_info">
     <configuration name="cpu_cores" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="psutil101" />
       <option name="ENV_FILES" value="" />
@@ -135,10 +136,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.sys_info" />
         <item itemvalue="Python.uptime" />
         <item itemvalue="Python.cpu_cores" />
         <item itemvalue="Python.process_list" />
-        <item itemvalue="Python.sys_info" />
       </list>
     </recent_temporary>
   </component>
