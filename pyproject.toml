@@ -1,15 +1,12 @@
-[tool.poetry]
+[project]
 name = "psutil101"
 version = "0.1.0"
 description = ""
 authors = ["tonyfenng <18113020130@163.com>"]
-readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.11"
-psutil = "^6.1.0"
-
+readme = "readme.txt"
+requires-python = ">=3.11"
+dependencies = ["psutil>=6.1.0"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
