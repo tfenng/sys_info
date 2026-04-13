@@ -20,6 +20,9 @@
 - 网卡地址、状态与各网卡流量
 - 网络连接状态汇总
 - 进程 CPU / 内存 Top 10
+- 温度与电池状态（平台相关）
+- 监听端口列表
+- 进程线程数 / 打开文件数 Top 10
 
 ## 环境要求
 
@@ -74,6 +77,7 @@ uv run python main.py processes
 uv run python disk.py
 uv run python load.py
 uv run python net.py
+uv run python overview.py
 uv run python processes.py
 uv run python up_interfaces.py
 uv run python users.py
@@ -83,6 +87,7 @@ uv run python users.py
 
 - `main.py`：统一入口，支持交互菜单与子命令分发
 - `common.py`：公共格式化与输出辅助函数
+- `overview.py`：系统概览与传感器信息
 - `load.py`：负载详情与 CPU / 内存 Top 10
 - `disk.py`：磁盘容量与磁盘 I/O 统计
 - `net.py`：查看网络收发统计和连接信息

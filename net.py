@@ -41,20 +41,22 @@ def render_network_details(clear: bool = True) -> None:
         for state, count in sorted(state_counts.items(), key=lambda item: (-item[1], item[0])):
             print(f"{state:<13} {count}")
 
-        listeners = sorted(
-            {
-                f"{conn.laddr.ip}:{conn.laddr.port}"
-                for conn in connections
-                if conn.status == psutil.CONN_LISTEN and conn.laddr
-            }
-        )
-        if listeners:
+        listener_rows = []
+        for conn in connections:
+            if conn.status != psutil.CONN_LISTEN or not conn.laddr:
+                continue
+            host = getattr(conn.laddr, "ip", conn.laddr[0])
+            port = getattr(conn.laddr, "port", conn.laddr[1])
+            listener_rows.append((host, port, conn.pid))
+
+        if listener_rows:
             print_separator()
-            print("Listening Endpoints")
-            for endpoint in listeners[:15]:
-                print(endpoint)
-            if len(listeners) > 15:
-                print(f"... {len(listeners) - 15} more")
+            print("Listening Ports")
+            for host, port, pid in sorted(listener_rows, key=lambda item: (item[1], item[0]))[:20]:
+                pid_text = pid if pid is not None else "-"
+                print(f"{host}:{port:<5} pid {pid_text}")
+            if len(listener_rows) > 20:
+                print(f"... {len(listener_rows) - 20} more")
     except (psutil.AccessDenied, psutil.Error) as exc:
         print(f"Unable to read connection details without elevated privileges: {exc}")
 

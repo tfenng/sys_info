@@ -1,59 +1,14 @@
 from __future__ import annotations
 
 import argparse
-import time
 
-import psutil
-
-from common import clear_screen, format_duration, format_timestamp, print_separator
-from disk import get_root_disk_summary, render_disk_details
-from load import format_loadavg, get_cpu_summary, render_load_details
-from net import get_network_summary, render_network_details
+from disk import render_disk_details
+from load import render_load_details
+from net import render_network_details
+from overview import render_overview
 from processes import main as run_process_list
 from up_interfaces import render_network_interfaces
-from users import get_online_user_summary, render_user_details
-
-
-def get_process_summary() -> str:
-    return f"{len(psutil.pids())} running"
-
-
-def render_overview(clear: bool = True, show_menu: bool = True) -> None:
-    if clear:
-        clear_screen()
-
-    print("System Info")
-    print_separator("=")
-    print(
-        "CPU      : "
-        f"{psutil.cpu_count(logical=False) or 0} cores / {psutil.cpu_count() or 0} threads"
-    )
-    print(f"CPU Freq : {get_cpu_summary()}")
-    print(f"CPU Use  : {psutil.cpu_percent(interval=0.2):.1f}%")
-    print(f"Load Avg : {format_loadavg()}")
-    print_separator()
-
-    memory = psutil.virtual_memory()
-    print(
-        "Memory   : "
-        f"{memory.used / (1024 ** 3):.2f} GiB / {memory.total / (1024 ** 3):.2f} GiB "
-        f"({memory.percent:.1f}%)"
-    )
-    print(f"Disk     : {get_root_disk_summary()}")
-    print(f"Network  : {get_network_summary()}")
-    print(f"Users    : {get_online_user_summary()}")
-    print(f"Processes: {get_process_summary()}")
-    print_separator()
-
-    boot_time = psutil.boot_time()
-    print(f"Boot Time: {format_timestamp(boot_time)}")
-    print(f"Uptime   : {format_duration(time.time() - boot_time)}")
-
-    if show_menu:
-        print_separator("=")
-        print("[1] Users details     [2] Load details   [3] Disk details   [4] Network details")
-        print("[5] Network interfaces (UP)")
-        print("[R] Refresh           [Q] Quit")
+from users import render_user_details
 
 
 def show_detail_page(renderer) -> str:
