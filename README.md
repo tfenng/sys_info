@@ -1,6 +1,11 @@
 # 系统信息工具
 
-这是一个基于 `psutil` 的轻量级 Python 命令行工具，用于快速查看当前机器的基础系统信息，并通过两级菜单进入用户、负载、磁盘、网络、网络接口等详情页。
+这是一个基于 `psutil` 的轻量级 Python 命令行工具，用于快速查看当前机器的基础系统信息。现在入口分为两种模式：
+
+- 交互模式：`python main.py`
+- 子命令模式：`python main.py <sub-command>`
+
+功能逻辑已拆分到多个扁平子模块，`main.py` 只负责总入口和分发。
 
 ## 功能概览
 
@@ -51,22 +56,39 @@ uv run python main.py
 - `r`：刷新当前页面
 - `q`：退出
 
-分别运行单个模块：
+直接通过子命令运行单项功能：
 
 ```bash
-uv run python net_io.py
-uv run python process_list.py
-uv run python uptime.py
+uv run python main.py overview
+uv run python main.py users
+uv run python main.py load
+uv run python main.py disk
+uv run python main.py network
+uv run python main.py interfaces
+uv run python main.py processes
+```
+
+也可以分别运行单个模块：
+
+```bash
+uv run python disk.py
+uv run python load.py
+uv run python net.py
+uv run python processes.py
+uv run python up_interfaces.py
 uv run python users.py
 ```
 
 ## 项目结构
 
-- `main.py`：系统概览与二级详情菜单入口
-- `uptime.py`：显示系统启动时间与已运行时长
-- `net_io.py`：查看网络收发统计和连接信息
-- `process_list.py`：列出当前运行中的进程
-- `users.py`：输出当前在线用户
+- `main.py`：统一入口，支持交互菜单与子命令分发
+- `common.py`：公共格式化与输出辅助函数
+- `load.py`：负载详情与 CPU / 内存 Top 10
+- `disk.py`：磁盘容量与磁盘 I/O 统计
+- `net.py`：查看网络收发统计和连接信息
+- `up_interfaces.py`：查看当前处于 UP 状态的网络接口
+- `processes.py`：列出当前运行中的进程
+- `users.py`：查看当前在线用户详情
 
 ## 说明
 

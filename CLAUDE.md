@@ -22,8 +22,8 @@ poetry install
 python main.py
 
 # Run individual modules directly
-python net_io.py
-python process_list.py
+python net.py
+python processes.py
 python uptime.py
 python users.py
 ```
@@ -33,7 +33,7 @@ python users.py
 - `main.py` - Aggregator script that prints all system info sections
 - `uptime.py` - Calculates and displays system boot time and uptime duration
 - `users.py` - Lists currently online users via `psutil.users()`
-- `net_io.py` - Standalone network I/O and connection stats
-- `process_list.py` - Lists running processes with PID, username, and name
+- `net.py` - Standalone network I/O and connection stats
+- `processes.py` - Lists running processes with PID, username, and name
 
 Modules use `psutil` for cross-platform system calls and `datetime` for time calculations.
