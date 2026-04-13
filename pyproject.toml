@@ -3,7 +3,7 @@ name = "psutil101"
 version = "0.1.0"
 description = ""
 authors = [{ name = "tonyfenng", email = "18113020130@163.com" }]
-readme = "readme.txt"
+readme = "README.md"
 requires-python = ">=3.11"
 dependencies = ["psutil>=6.1.0"]
 
