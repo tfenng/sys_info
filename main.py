@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import argparse
 
+from common import print_separator
 from disk import render_disk_details
+from interfaces import render_network_interfaces
 from load import render_load_details
-from net import render_network_details
 from overview import render_overview
 from processes import main as run_process_list
-from up_interfaces import render_network_interfaces
+from network import render_network_details
 from users import render_user_details
 
 

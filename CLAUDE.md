@@ -5,35 +5,36 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 This is a Python system information utility using `psutil` to display:
-- CPU count and frequency
-- Memory usage
-- Disk partitions and usage
-- Network I/O statistics
-- Online users
-- System uptime
+- Overview, load, disk, network, interfaces, users, and processes information
 
 ## Commands
 
 ```bash
 # Install dependencies
-poetry install
+uv sync
 
 # Run the main script
-python main.py
+uv run python main.py
 
 # Run individual modules directly
-python net.py
-python processes.py
-python uptime.py
-python users.py
+uv run python overview.py
+uv run python load.py
+uv run python disk.py
+uv run python network.py
+uv run python interfaces.py
+uv run python processes.py
+uv run python users.py
 ```
 
 ## Architecture
 
-- `main.py` - Aggregator script that prints all system info sections
-- `uptime.py` - Calculates and displays system boot time and uptime duration
+- `main.py` - Entry point for interactive mode and subcommands
+- `overview.py` - Overview and sensor information
+- `load.py` - Load details and process top lists
+- `disk.py` - Disk usage and disk I/O details
+- `network.py` - Network I/O, connections, and listening ports
+- `interfaces.py` - UP network interface details
 - `users.py` - Lists currently online users via `psutil.users()`
-- `net.py` - Standalone network I/O and connection stats
 - `processes.py` - Lists running processes with PID, username, and name
 
-Modules use `psutil` for cross-platform system calls and `datetime` for time calculations.
+Modules use `psutil` for cross-platform system calls.

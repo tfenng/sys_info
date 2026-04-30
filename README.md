@@ -75,11 +75,11 @@ uv run python main.py processes
 
 ```bash
 uv run python disk.py
+uv run python interfaces.py
 uv run python load.py
-uv run python net.py
+uv run python network.py
 uv run python overview.py
 uv run python processes.py
-uv run python up_interfaces.py
 uv run python users.py
 ```
 
@@ -90,8 +90,8 @@ uv run python users.py
 - `overview.py`：系统概览与传感器信息
 - `load.py`：负载详情与 CPU / 内存 Top 10
 - `disk.py`：磁盘容量与磁盘 I/O 统计
-- `net.py`：查看网络收发统计和连接信息
-- `up_interfaces.py`：查看当前处于 UP 状态的网络接口
+- `network.py`：查看网络收发统计和连接信息
+- `interfaces.py`：查看当前处于 UP 状态的网络接口
 - `processes.py`：列出当前运行中的进程
 - `users.py`：查看当前在线用户详情
 

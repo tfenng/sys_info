@@ -7,7 +7,7 @@ import psutil
 from common import clear_screen, format_duration, format_timestamp, print_separator
 from disk import get_root_disk_summary
 from load import format_loadavg, get_cpu_summary
-from net import get_network_summary
+from network import get_network_summary
 from users import get_online_user_summary
 
 
