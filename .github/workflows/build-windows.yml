@@ -1,0 +1,29 @@
+name: Build Windows executable
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Build executable
+        run: .\build.bat
+
+      - name: Upload executable
+        uses: actions/upload-artifact@v4
+        with:
+          name: sys-info-windows
+          path: dist/sys-info.exe
+          if-no-files-found: error
+          retention-days: 30
